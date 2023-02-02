@@ -1,17 +1,15 @@
 import app from "./app";
-import env from "./util/validateEnv"
-import mongoose from "mongoose"
+import env from "./util/validateEnv";
+import mongoose from "mongoose";
 
-mongoose.set('strictQuery', true);
+const port = env.PORT;
 
-const port = env.PORT
-
+mongoose.set('strictQuery', true)
 mongoose.connect(env.MONGO_URI)
     .then(() => {
-        console.log("Mongoose connected")
+        console.log("Mongoose connected");
         app.listen(port, () => {
-            console.log("Server running on port: " + port)
-        })
+            console.log("Server running on port: " + port);
+        });
     })
-    .catch(console.error)
-
+    .catch(console.error);
